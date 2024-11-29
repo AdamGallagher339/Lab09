@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 nrows = 2
 ncols = 1
 
-imgOrig = cv2.imread("ATU1.jpg",)
+imgOrig = cv2.imread("ATU.jpg",)
 imgGray = cv2.cvtColor(imgOrig, cv2.COLOR_BGR2GRAY)
 imgHarris = imgOrig.copy()
 imgShiTomasi = imgOrig.copy()
@@ -33,12 +33,12 @@ for i in range(len(dst)):
 cv2.imshow('Image Harris',imgHarris)
 cv2.waitKey(0)
 
-maxCorners = 10
-qualityLevel = 0.1
+maxCorners = 100
+qualityLevel = 0.01
 minDistance = 10
 
 corners = cv2.goodFeaturesToTrack(imgGray,maxCorners,qualityLevel,minDistance)
-corners = np.int8(corners) #convert corners values to integer
+corners = np.int0(corners) #convert corners values to integer
 
 for i in corners:
     x,y = i.ravel()
