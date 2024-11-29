@@ -47,4 +47,18 @@ for i in corners:
 cv2.imshow('Shi Tomasi',imgShiTomasi)
 cv2.waitKey(0)
 
-
+imgOrb = imgGray.copy()
+ 
+# Initiate ORB detector
+orb = cv2.ORB_create()
+ 
+# find the keypoints with ORB
+kp = orb.detect(imgOrb,None)
+ 
+# compute the descriptors with ORB
+kp, des = orb.compute(imgOrb, kp)
+ 
+# draw only keypoints location,not size and orientation
+imgOrb2 = cv2.drawKeypoints(imgOrb, kp, None, color=(0,255,0), flags=0)
+cv2.imshow('Orb Detection',imgOrb2)
+cv2.waitKey(0)
