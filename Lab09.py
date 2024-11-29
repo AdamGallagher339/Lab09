@@ -2,9 +2,6 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 
-nrows = 2
-ncols = 1
-
 imgOrig = cv2.imread("ATU.jpg",)
 imgGray = cv2.cvtColor(imgOrig, cv2.COLOR_BGR2GRAY)
 imgHarris = imgOrig.copy()
@@ -62,3 +59,23 @@ kp, des = orb.compute(imgOrb, kp)
 imgOrb2 = cv2.drawKeypoints(imgOrb, kp, None, color=(0,255,0), flags=0)
 cv2.imshow('Orb Detection',imgOrb2)
 cv2.waitKey(0)
+
+nrows = 2
+ncols = 3
+
+plt.subplot(nrows, ncols, 1), plt.imshow(cv2.cvtColor(imgOrig, cv2.COLOR_BGR2RGB), cmap= 'gray')
+plt.title('Original'), plt.xticks([]), plt.yticks([])
+
+plt.subplot(nrows, ncols, 2), plt.imshow(cv2.cvtColor(imgGray, cv2.COLOR_BGR2RGB), cmap= 'gray')
+plt.title('Gray'), plt.xticks([]), plt.yticks([])
+
+plt.subplot(nrows, ncols, 3), plt.imshow(cv2.cvtColor(imgHarris, cv2.COLOR_BGR2RGB), cmap= 'gray')
+plt.title('Corner Harris'), plt.xticks([]), plt.yticks([])
+
+plt.subplot(nrows, ncols, 4), plt.imshow(cv2.cvtColor(imgShiTomasi, cv2.COLOR_BGR2RGB), cmap= 'gray')
+plt.title('Shi Tomasi'), plt.xticks([]), plt.yticks([])
+
+plt.subplot(nrows, ncols, 5), plt.imshow(cv2.cvtColor(imgOrb2, cv2.COLOR_BGR2RGB), cmap= 'gray')
+plt.title('Orb Detection'), plt.xticks([]), plt.yticks([])
+
+plt.show()
