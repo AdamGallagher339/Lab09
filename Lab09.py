@@ -23,9 +23,6 @@ k = 0.03
 
 dst = cv2.cornerHarris(imgGray, blockSize, aperture_size, k)
 
-qualityLevel = 0.1
-minDistance = 10
-
 threshold = 0.2; #number between 0 and 1
 for i in range(len(dst)):
     for j in range(len(dst[i])):
@@ -34,3 +31,11 @@ for i in range(len(dst)):
 
 cv2.imshow('Image Harris',imgHarris)
 cv2.waitKey(0)
+
+maxCorners = 2
+qualityLevel = 0.1
+minDistance = 10
+
+corners = cv2.goodFeaturesToTrack(imgGray,maxCorners,qualityLevel,minDistance)
+corners = np.int0(corners) #convert corners values to integer
+
