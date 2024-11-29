@@ -33,10 +33,18 @@ for i in range(len(dst)):
 cv2.imshow('Image Harris',imgHarris)
 cv2.waitKey(0)
 
-maxCorners = 2
+maxCorners = 10
 qualityLevel = 0.1
 minDistance = 10
 
 corners = cv2.goodFeaturesToTrack(imgGray,maxCorners,qualityLevel,minDistance)
-corners = np.int0(corners) #convert corners values to integer
+corners = np.int8(corners) #convert corners values to integer
+
+for i in corners:
+    x,y = i.ravel()
+    cv2.circle(imgShiTomasi,(x,y),3,(B, G, R),-1)
+    
+cv2.imshow('Shi Tomasi',imgShiTomasi)
+cv2.waitKey(0)
+
 
