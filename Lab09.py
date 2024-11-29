@@ -8,6 +8,7 @@ ncols = 1
 imgOrig = cv2.imread("ATU1.jpg",)
 imgGray = cv2.cvtColor(imgOrig, cv2.COLOR_BGR2GRAY)
 imgHarris = imgOrig.copy()
+imgShiTomasi = imgOrig.copy()
 
 cv2.imshow('Atu Origional',imgOrig)
 cv2.waitKey(0)
